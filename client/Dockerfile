@@ -75,4 +75,4 @@ VOLUME /home/usr1cv8/.1cv8/
 
 USER usr1cv8
 
-CMD ["/opt/1C/v8.3/x86_64/1cv8"]
+CMD ["/opt/1C/v8.3/x86_64/1cv8s"]
