@@ -89,13 +89,13 @@ ENV LANG ru_RU.UTF-8
 RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C / \
   && rm -rf /tmp/s6-overlay-amd64.tar.gz
 
+COPY ./configs/client-vnc/rootfs/ /
+
 RUN groupadd -r usr1cv8 --gid=2001 \
   && useradd -r -g usr1cv8 --uid=2001 --home-dir=/home/usr1cv8 --shell=/sbin/nologin usr1cv8 \
   && mkdir -p /home/usr1cv8/.1cv8 \
   && mkdir -p /home/usr1cv8/.1C/1cestart \
   && chown -R usr1cv8:usr1cv8 /home/usr1cv8
-
-COPY ./configs/client-vnc/rootfs/ /
 
 ENV DISPLAY=:0
 ENV DISPLAY_WIDTH=1440
