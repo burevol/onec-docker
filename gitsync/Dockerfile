@@ -1,6 +1,6 @@
 ARG DOCKER_USERNAME
 ARG ONEC_VERSION
-FROM ${DOCKER_USERNAME}/onec-client:${ONEC_VERSION} as base
+FROM ${REGISTRY_PATH}/onec-client:${ONEC_VERSION} AS base
 
 FROM mono:5.20-slim
 LABEL maintainer="Anton Kvashenkin <anton.jugatsu@gmail.com> (@jugatsu)"
