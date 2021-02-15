@@ -7,6 +7,8 @@ FROM ${DOCKER_USERNAME}/${BASE_IMAGE}:${BASE_TAG}
 # Installing mono and oscript dependencies
 ARG MONO_VERSION=6.8.0.105
 
+USER root
+
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       gnupg \
