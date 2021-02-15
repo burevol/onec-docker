@@ -12,6 +12,8 @@ ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.8.0/s6
 RUN apt-get update \
   && apt-mark hold iptables \
   && env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    ca-certificates \
+    wget \	
     dbus-x11 \
     psmisc \
     xdg-utils \
@@ -63,7 +65,6 @@ RUN apt-get update \
   && echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections \
   && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      ca-certificates \
       locales \
       libwebkitgtk-3.0-0 \
       ttf-mscorefonts-installer \
