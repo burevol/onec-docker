@@ -3,7 +3,7 @@ ARG ONEC_VERSION
 FROM ${DOCKER_USERNAME}/onec-server:${ONEC_VERSION}
 LABEL maintainer="Anton Kvashenkin <anton.jugatsu@gmail.com> (@jugatsu)"
 
-ARG gui_ver=1.1.0.1amd64
+ARG gui_ver=1.1.0-2amd64
 ARG gui_url=https://nuk-svk.ru/uploads/rac-gui
 
 RUN set -xe \
