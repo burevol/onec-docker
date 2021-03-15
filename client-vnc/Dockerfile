@@ -3,6 +3,7 @@ ARG ONEC_VERSION
 FROM ${DOCKER_USERNAME}/onec-client:${ONEC_VERSION} as base
 
 FROM debian:stretch-slim
+ARG ONEC_VERSION
 
 COPY --from=base /opt /opt
 
@@ -60,8 +61,6 @@ RUN apt-get update \
   && echo "deb http://http.debian.net/debian/ stretch-updates main contrib non-free" >> /etc/apt/sources.list \
   && echo "deb http://security.debian.org/ stretch/updates main contrib non-free" >> /etc/apt/sources.list \
   && echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections \
-  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 \
-  && echo "deb http://security.ubuntu.com/ubuntu xenial-security main" > /etc/apt/sources.list.d/xenial-security.list \
   && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       ca-certificates \
@@ -72,11 +71,16 @@ RUN apt-get update \
       libgsf-1-114 \
       libglib2.0-0 \
       libodbc1 \
-      libpng12-0 \
       libmagickwand-6.q16-3 \
       at-spi2-core \
       procps \
       x11vnc \
+  # Install libpng12-0 from xenial
+  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 \
+  && echo "deb http://security.ubuntu.com/ubuntu xenial-security main" > /etc/apt/sources.list.d/xenial-security.list \
+  && apt-get update \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+      libpng12-0 \
   # Install git from backports
   && DEBIAN_FRONTEND=noninteractive apt-get -t stretch-backports install -y --no-install-recommends \
     git \
@@ -96,6 +100,8 @@ RUN groupadd -r usr1cv8 --gid=2001 \
   && chown -R usr1cv8:usr1cv8 /home/usr1cv8
 
 COPY ./configs/client-vnc/rootfs/ /
+RUN mkdir -p /opt/1cv8/x86_64/${ONEC_VERSION} \
+  && ln -s /opt/1C/v8.3/x86_64/conf /opt/1cv8/x86_64/${ONEC_VERSION}/conf
 
 ENV DISPLAY=:0
 ENV DISPLAY_WIDTH=1440
