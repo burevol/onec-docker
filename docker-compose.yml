@@ -9,8 +9,8 @@ services:
       - "1540-1541:1540-1541"
       - "1560:1560"
     volumes:
-      - srv_data:/home/usr1cv8/.1cv8
-      - srv_log:/var/log/1C
+      - ./srv_data:/home/usr1cv8/.1cv8
+      - ./srv_log:/var/log/1C
     networks:
       - back_net
 
