@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 # start crserver
 if [ -d "/opt/1cv8/i386/$ONEC_VERSION/" ]; then
