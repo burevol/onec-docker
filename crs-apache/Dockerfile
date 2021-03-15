@@ -1,10 +1,10 @@
 ARG DOCKER_USERNAME
 ARG ONEC_VERSION
-ENV ONEC_VERSION=${ONEC_VERSION}
 
 FROM ${DOCKER_USERNAME}/onec-crs:${ONEC_VERSION}
 
 ARG REPO_DIR=/home/usr1cv8/.1cv8/repo
+ENV ONEC_VERSION=${ONEC_VERSION}
 
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
