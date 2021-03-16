@@ -1,5 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
+echo $ONEC_VERSION
 # start crserver
 if [ -d "/opt/1cv8/i386/$ONEC_VERSION/" ]; then
   exec gosu usr1cv8 /opt/1cv8/i386/$ONEC_VERSION/crserver -port 1542 -d /home/usr1cv8/.1cv8/repo -daemon &
