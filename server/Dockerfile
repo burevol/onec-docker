@@ -40,6 +40,8 @@ RUN chmod +x /bin/gosu
 FROM debian:stretch-slim
 LABEL maintainer="Anton Kvashenkin <anton.jugatsu@gmail.com> (@jugatsu)"
 
+ARG ONEC_VERSION
+
 ARG onec_uid="999"
 ARG onec_gid="999"
 
@@ -69,6 +71,7 @@ COPY ./server/logcfg.xml /home/usr1cv8/.1cv8/1C/1cv8/conf
 
 COPY ./server/docker-entrypoint.sh /usr/local/bin
 RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
+RUN echo export ONEC_VERSION=$ONEC_VERSION > /opt/1cv8/version
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 1540 1541 1560
