@@ -71,7 +71,7 @@ COPY ./server/logcfg.xml /home/usr1cv8/.1cv8/1C/1cv8/conf
 
 COPY ./server/docker-entrypoint.sh /usr/local/bin
 RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
-RUN echo export ONEC_VERSION=$ONEC_VERSION > /opt/1cv8/version
+RUN echo export ONEC_VERSION=$ONEC_VERSION > /home/usr1cv8/version
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 1540 1541 1560
