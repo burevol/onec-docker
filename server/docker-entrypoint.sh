@@ -1,6 +1,6 @@
 #!/bin/bash
 
-eval $(cat /opt/1cv8/version)
+eval $(cat /home/usr1cv8/version)
 
 if [ "$1" = "ragent" ]; then
   if ! [ -d /opt/1cv8/x86_64/$ONEC_VERSION ]; then
